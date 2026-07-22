@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { X, Calendar, Flame, Timer, Activity, Loader2 } from 'lucide-react';
 import { useData } from '../context/DataContext';
+import ActivityCombobox from './ActivityCombobox';
 
 const ACTIVITIES = [
   'Strength Training',
@@ -126,24 +127,13 @@ export default function AddSessionModal({ open, onClose }) {
 
             <div className="col-span-2 sm:col-span-1">
               <label className="mb-1.5 block text-xs font-semibold text-gray-400">Activity</label>
-              <div className="relative">
-                <Activity size={16} className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-gray-500" />
-                <input
-                  type="text"
-                  list="activity-suggestions"
-                  value={form.activity}
-                  onChange={(e) => update('activity', e.target.value)}
-                  placeholder="e.g. Strength Training, Padel, Climbing..."
-                  className="w-full rounded-lg border border-border bg-base py-2.5 pl-9 pr-3 text-sm text-gray-200 outline-none focus:border-purple-500"
-                  required
-                  maxLength={40}
-                />
-                <datalist id="activity-suggestions">
-                  {ACTIVITIES.map((a) => (
-                    <option key={a} value={a} />
-                  ))}
-                </datalist>
-              </div>
+              <ActivityCombobox
+                value={form.activity}
+                onChange={(val) => update('activity', val)}
+                options={ACTIVITIES}
+                icon={Activity}
+                placeholder="Select or type an activity"
+              />
             </div>
 
             <div className="col-span-2 sm:col-span-1">
