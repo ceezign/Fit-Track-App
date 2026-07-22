@@ -128,17 +128,21 @@ export default function AddSessionModal({ open, onClose }) {
               <label className="mb-1.5 block text-xs font-semibold text-gray-400">Activity</label>
               <div className="relative">
                 <Activity size={16} className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-gray-500" />
-                <select
+                <input
+                  type="text"
+                  list="activity-suggestions"
                   value={form.activity}
                   onChange={(e) => update('activity', e.target.value)}
-                  className="w-full appearance-none rounded-lg border border-border bg-base py-2.5 pl-9 pr-3 text-sm text-gray-200 outline-none focus:border-purple-500"
-                >
+                  placeholder="e.g. Strength Training, Padel, Climbing..."
+                  className="w-full rounded-lg border border-border bg-base py-2.5 pl-9 pr-3 text-sm text-gray-200 outline-none focus:border-purple-500"
+                  required
+                  maxLength={40}
+                />
+                <datalist id="activity-suggestions">
                   {ACTIVITIES.map((a) => (
-                    <option key={a} value={a}>
-                      {a}
-                    </option>
+                    <option key={a} value={a} />
                   ))}
-                </select>
+                </datalist>
               </div>
             </div>
 

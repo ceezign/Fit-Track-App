@@ -96,7 +96,9 @@ All `/api/sessions` and `/api/goals` routes require `Authorization: Bearer <toke
 - To build for production: `npm run build` in `client/`, then serve `client/dist` with any static host (or point the Express server at it) and deploy `server/` with `npm start`.
 
 
-🔗 Live Demo: [https://your-live-link.netlify.app](#)
+🔗 Backend live on Render: [https://fit-track-app-is2y.onrender.com](#)
+
+🔗 Frontend live on Vercel: [https://fit-track-app-vert.vercel.app](#)
 
 ## 👨‍💻 Author
 

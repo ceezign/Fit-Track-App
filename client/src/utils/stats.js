@@ -65,17 +65,26 @@ export function getRadarData(sessions) {
   const totalMinutes = recent.reduce((sum, s) => sum + (s.duration || 0), 0);
   const volume = Math.min(100, Math.round((totalMinutes / (28 * 30)) * 100));
 
+  const matchesAny = (activity, keywords) => {
+    const lower = (activity || '').toLowerCase();
+    return keywords.some((k) => lower.includes(k));
+  };
+
+  const CARDIO_KEYWORDS = ['run', 'cycl', 'bike', 'swim', 'row', 'hiit', 'hik', 'cardio', 'sprint'];
+  const STRENGTH_KEYWORDS = ['strength', 'weight', 'lift', 'crossfit', 'boxing', 'gym'];
+  const RECOVERY_KEYWORDS = ['yoga', 'pilates', 'stretch', 'mobility', 'recovery'];
+
   const cardioMinutes = recent
-    .filter((s) => ['Running', 'Cycling', 'Swimming', 'Rowing', 'HIIT', 'Hiking'].includes(s.activity))
+    .filter((s) => matchesAny(s.activity, CARDIO_KEYWORDS))
     .reduce((sum, s) => sum + (s.duration || 0), 0);
   const endurance = Math.min(100, Math.round((cardioMinutes / (28 * 20)) * 100));
 
-  const strengthSessions = recent.filter((s) =>
-    ['Strength Training', 'CrossFit', 'Boxing'].includes(s.activity)
-  ).length;
+  const strengthSessions = recent.filter((s) => matchesAny(s.activity, STRENGTH_KEYWORDS)).length;
   const strength = Math.min(100, Math.round((strengthSessions / 12) * 100));
 
-  const recoverySessions = recent.filter((s) => ['Yoga', 'Pilates'].includes(s.activity) || s.intensity === 'Low').length;
+  const recoverySessions = recent.filter(
+    (s) => matchesAny(s.activity, RECOVERY_KEYWORDS) || s.intensity === 'Low'
+  ).length;
   const recovery = Math.min(100, Math.round((recoverySessions / 8) * 100));
 
   return [
