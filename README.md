@@ -96,9 +96,9 @@ All `/api/sessions` and `/api/goals` routes require `Authorization: Bearer <toke
 - To build for production: `npm run build` in `client/`, then serve `client/dist` with any static host (or point the Express server at it) and deploy `server/` with `npm start`.
 
 
-🔗 Backend live on Render: [https://fit-track-app-is2y.onrender.com](#)
+🔗 Backend live on Render: [FitTrack App Backend](https://fit-track-app-is2y.onrender.com)
 
-🔗 Frontend live on Vercel: [https://fit-track-app-vert.vercel.app](#)
+🔗 Frontend live on Vercel: [FitTrack App Frontend](https://fit-track-app-vert.vercel.app/)
 
 ## 👨‍💻 Author
 
@@ -106,9 +106,10 @@ Atunde Toheeb Ayomide (Jiggy)
 📍 Lagos, Nigeria  
 📧 [atundetoheeb1@gmail.com](mailto:atundetoheeb1@gmail.com)  
 🔗 [GitHub](https://github.com/ceezign) | [LinkedIn](https://www.linkedin.com/in/atunde-toheeb-551826313)
+💼 [Website](https://atunde-portfolio-web.vercel.app/)
 
 ---
 
-## 🪪 License
+## 📄 License
 
-This project is open source and available under the MIT License.
+MIT — free to use, modify, and share.
